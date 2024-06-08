@@ -24,6 +24,6 @@ jobs:
 
       - name: Build the application
         run: |
-          mvn clean ./player-backend
+          mvn clean --file ./player-backend
           mvn -B package --file ./player-backend/pom.xml
           
