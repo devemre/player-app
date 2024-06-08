@@ -27,8 +27,10 @@ jobs:
           mvn clean --file ./player-backend
           mvn -B package --file ./player-backend/pom.xml
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Extract Project Version
+        run: |
+          cd player-backend
+          echo "VERSION=$(./mvnw -q -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -36,7 +38,13 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.PLAYER_TOKEN }}
 
-      - name: Build and push
-        run: |
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:latest -f ./docker/backend/Dockerfile .
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:latest
+      - name: Build and push to DockerHub
+        uses: docker/build-push-action@v5
+        with:
+          context: player-backend
+          file: docker/backend/Dockerfile
+          push: true
+          platforms: linux/amd64
+          build-args: |
+            APP_VERSION=${{ steps.extract_version.outputs.VERSION }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:${{ steps.extract_version.outputs.VERSION }}, ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:latest
