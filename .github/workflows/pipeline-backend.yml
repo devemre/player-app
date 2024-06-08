@@ -28,6 +28,7 @@ jobs:
           mvn -B package --file ./player-backend/pom.xml
 
       - name: Extract Project Version
+        id: extract_version
         run: |
           cd player-backend
           echo "VERSION=$(./mvnw -q -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
@@ -45,6 +46,4 @@ jobs:
           file: docker/backend/Dockerfile
           push: true
           platforms: linux/amd64
-          build-args: |
-            APP_VERSION=${{ steps.extract_version.outputs.VERSION }}
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:latest
