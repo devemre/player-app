@@ -47,4 +47,4 @@ jobs:
           platforms: linux/amd64
           build-args: |
             APP_VERSION=${{ steps.extract_version.outputs.VERSION }}
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:${{ steps.extract_version.outputs.VERSION }}, ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKER_HUB_USERNAME }}/player-backend:latest
