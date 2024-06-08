@@ -1,0 +1,34 @@
+services:
+  postgres:
+    container_name: postgres-player
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+      POSTGRES_DB: player_network
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - player-net
+    restart: unless-stopped
+
+  player-backend:
+    container_name: player-backend
+    image: player-backend/player-backend:1.0.0
+    ports:
+      - 8088:8088
+    networks:
+      - player-net
+    depends_on:
+      - postgres
+
+networks:
+  player-net:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local
