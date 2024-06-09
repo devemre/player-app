@@ -53,5 +53,5 @@ jobs:
           context: player-frontend
           file: docker/frontend/Dockerfile
           push: true
-          platforms: linux/amd64
+          platforms: linux/arm64/v8
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/player-frontend:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/player-frontend:latest
