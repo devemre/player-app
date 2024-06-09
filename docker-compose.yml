@@ -25,6 +25,16 @@ services:
     depends_on:
       - postgres
 
+  player-frontend:
+    container_name: player-frontend
+    image: devemre/player-frontend:latest
+    ports:
+      - 5173:5173
+    networks:
+      - player-net
+    depends_on:
+      - player-backend
+
 networks:
   player-net:
     driver: bridge
