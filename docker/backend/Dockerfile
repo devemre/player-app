@@ -22,6 +22,3 @@ ENV ACTIVE_PROFILE=${PROFILE}
 ENV JAR_VERSION=${APP_VERSION}
 
 CMD java -jar -Dspring.profiles.active=${ACTIVE_PROFILE} -Dspring.datasource.url=${DB_URL} player-backend-${JAR_VERSION}.jar
-
-# Command stage
-# docker build -t player-backend/player-backend:1.0.0 -f ../docker/backend/Dockerfile .
