@@ -8,7 +8,7 @@ on:
       - player-backend/**
       - docker/backend/**
       - 'docker-compose.yml'
-      - .github/workflows/*-backend.yml
+      - .github/workflows/backend/*-backend.yml
 
 jobs:
   compile:
@@ -30,7 +30,6 @@ jobs:
         run: |
           cd player-backend
           mvn clean compile
-
 
   unit-tests:
     name: 'Run Unit Tests: Player Backend'
