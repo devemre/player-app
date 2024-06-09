@@ -2,9 +2,9 @@
 FROM maven:3.8.7-openjdk-18 AS build
 WORKDIR /build
 COPY pom.xml .
-RUN mvnw dependency:go-offline
+RUN ./mvnw dependency:go-offline
 COPY src ./src
-RUN mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests
 
 # Runtime stage
 FROM amazoncorretto:17
