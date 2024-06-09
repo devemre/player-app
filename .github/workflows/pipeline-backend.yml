@@ -8,7 +8,7 @@ on:
       - player-backend/**
       - docker/backend/**
       - 'docker-compose.yml'
-      - .github/workflows/backend/*-backend.yml
+      - .github/workflows/*-backend.yml
 
 jobs:
   compile:
