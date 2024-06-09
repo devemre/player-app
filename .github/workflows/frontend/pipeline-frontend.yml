@@ -7,12 +7,12 @@ on:
     paths:
       - player-frontend/**
       - docker/frontend/**
-      - "docker-compose.yml"
+      - 'docker-compose.yml'
       - .github/workflows/frontend/*-frontend.yml
 
 jobs:
   build:
-    name: "Build: Player Frontend"
+    name: 'Build: Player Frontend'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -54,4 +54,4 @@ jobs:
           file: docker/frontend/Dockerfile
           push: true
           platforms: linux/amd64
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/player-frontend:latest,${{ secrets.DOCKERHUB_USERNAME }}/player-frontend:${{ steps.extract_version.outputs.VERSION }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/player-frontend:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/player-frontend:latest
