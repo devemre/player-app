@@ -1,9 +1,10 @@
 # Build stage
-FROM maven:3.9.7-amazoncorretto-17 AS build
+FROM maven:3.8.7-openjdk-18 AS build
 WORKDIR /build
 COPY pom.xml .
+RUN mvnw dependency:go-offline
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvnw clean package -DskipTests
 
 # Runtime stage
 FROM amazoncorretto:17
