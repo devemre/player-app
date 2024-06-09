@@ -1,7 +1,7 @@
 FROM node:20 as build
 
 WORKDIR /app
-COPY . ./app
+COPY . .
 
 RUN npm install serve -g
 RUN npm install
