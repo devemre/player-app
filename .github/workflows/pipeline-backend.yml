@@ -106,7 +106,7 @@ jobs:
           context: player-backend
           file: docker/backend/Dockerfile
           push: true
-          platforms: linux/arm64/v8
+          platforms: linux/amd64
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/player-backend:${{ steps.extract_version.outputs.VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/player-backend:latest
           build-args: |
             PROFILE=dev
