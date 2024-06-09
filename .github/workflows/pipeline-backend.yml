@@ -73,7 +73,6 @@ jobs:
           cd player-backend
           mvn clean package
 
-
   build-image:
     name: 'Build Docker Image: Player Backend'
     runs-on: ubuntu-latest
