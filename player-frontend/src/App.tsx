@@ -1,6 +1,8 @@
 import { Table } from "./components";
+import http from "./http";
 
 function App() {
+  console.log(http);
   return (
     <div className="p-10">
       <Table
