@@ -1,9 +1,10 @@
 import React from "react";
+import { Player } from "../../types/Player";
 
 type TableProps = {
   title?: string;
   columns: Array<string>;
-  data: Array<Object>;
+  data: Array<Player>;
 };
 
 const Table = (props: TableProps) => {
