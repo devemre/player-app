@@ -4,6 +4,7 @@ import http from "./http";
 function App() {
   console.log(http);
   console.log("hello");
+  http.get("/players");
   return (
     <div className="p-10">
       <Table
