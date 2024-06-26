@@ -33,8 +33,12 @@ const Table = (props: TableProps) => {
               <td className="border-r border-gray-300 p-1">
                 {element.username}
               </td>
-              <td className="border-r border-gray-300 p-1">{element.race}</td>
-              <td className="border-r border-gray-300 p-1">{element.class}</td>
+              <td className="border-r border-gray-300 p-1">
+                {element.characterRace}
+              </td>
+              <td className="border-r border-gray-300 p-1">
+                {element.characterClass}
+              </td>
               <td className="border-gray-300 p-1">{element.level}</td>
             </tr>
           ))}
