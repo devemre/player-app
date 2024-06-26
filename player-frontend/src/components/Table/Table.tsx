@@ -11,11 +11,11 @@ const Table = (props: TableProps) => {
     <div className="w-full border border-gray-300 rounded-md p-0">
       <table className="table-fixed w-full border-t border-gray-300 m-0">
         {props.title && (
-          <caption className="caption-top bg-gray-100 rounded-t-md">
+          <caption className="caption-top bg-slate-100 rounded-t-md">
             {props.title}
           </caption>
         )}
-        <thead className="border-b border-gray-300 bg-gray-100">
+        <thead className="border-b border-gray-300 bg-slate-100">
           <tr>
             {props.columns.map((column) => (
               <th
@@ -29,7 +29,10 @@ const Table = (props: TableProps) => {
         </thead>
         <tbody>
           {props.data.map((element) => (
-            <tr key={element.id} className="border-b last:border-none">
+            <tr
+              key={element.id}
+              className="border-b last:border-none hover:bg-slate-100"
+            >
               <td className="border-r border-gray-300 p-1">
                 {element.username}
               </td>
