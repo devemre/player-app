@@ -1,30 +1,23 @@
+import { useEffect, useState } from "react";
 import { Table } from "./components";
 import http from "./http";
+import { Player } from "./types/Player";
 
 function App() {
-  console.log(http);
-  console.log("hello");
-  http.get("/api/v1/players");
+  const [data, setData] = useState<Player[]>([]);
+
+  useEffect(() => {
+    http.get("/api/v1/players").then((response) => {
+      setData(response.data);
+    });
+  }, []);
+
   return (
     <div className="p-10">
       <Table
         title="Players"
         columns={["Username", "Race", "Class", "Level"]}
-        data={[
-          { id: 1, username: "emre", race: "Elf", class: "Assassin", level: 1 },
-          { id: 2, username: "emre", race: "Elf", class: "Assassin", level: 1 },
-          { id: 3, username: "emre", race: "Elf", class: "Assassin", level: 1 },
-          { id: 4, username: "emre", race: "Elf", class: "Assassin", level: 1 },
-          { id: 5, username: "emre", race: "Elf", class: "Assassin", level: 1 },
-          { id: 6, username: "emre", race: "Elf", class: "Assassin", level: 1 },
-          {
-            id: 7,
-            username: "aydın",
-            race: "Elf",
-            class: "Assassin",
-            level: 1,
-          },
-        ]}
+        data={data}
       />
     </div>
   );
