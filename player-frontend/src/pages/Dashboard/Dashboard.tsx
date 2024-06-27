@@ -4,11 +4,11 @@ import http from "../../http";
 import { Table } from "../../components";
 
 const Dashboard = () => {
-  const [data, setData] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>([]);
 
   useEffect(() => {
     http.get("/api/v1/players").then((response) => {
-      setData(response.data);
+      setPlayers(response.data);
     });
   }, []);
 
@@ -17,7 +17,7 @@ const Dashboard = () => {
       <Table
         title="Players"
         columns={["Username", "Race", "Class", "Level"]}
-        data={data}
+        data={players}
       />
     </div>
   );
