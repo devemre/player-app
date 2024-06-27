@@ -4,7 +4,6 @@ type TableProps = {
   title?: string;
   columns: Array<string>;
   data: Array<Player>;
-  onRowClick: () => void;
 };
 
 const Table = (props: TableProps) => {
@@ -45,7 +44,11 @@ const Table = (props: TableProps) => {
               </td>
               <td className="border-gray-300 p-1">{element.level}</td>
               <td className="border-gray-300 p-1">
-                <button onClick={props.onRowClick}>edit</button>
+                <button
+                  onClick={() => console.log("navigate to edit " + element.id)}
+                >
+                  Edit
+                </button>
               </td>
             </tr>
           ))}

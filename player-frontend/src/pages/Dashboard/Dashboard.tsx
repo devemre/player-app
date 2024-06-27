@@ -18,7 +18,6 @@ const Dashboard = () => {
         title="Players"
         columns={["Username", "Race", "Class", "Level", "Action"]}
         data={players}
-        onRowClick={() => {}}
       />
     </div>
   );
