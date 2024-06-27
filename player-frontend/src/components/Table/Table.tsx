@@ -4,6 +4,7 @@ type TableProps = {
   title?: string;
   columns: Array<string>;
   data: Array<Player>;
+  onRowClick: () => {};
 };
 
 const Table = (props: TableProps) => {
@@ -43,6 +44,9 @@ const Table = (props: TableProps) => {
                 {element.characterClass}
               </td>
               <td className="border-gray-300 p-1">{element.level}</td>
+              <td className="border-gray-300 p-1">
+                <button onClick={props.onRowClick} />
+              </td>
             </tr>
           ))}
         </tbody>

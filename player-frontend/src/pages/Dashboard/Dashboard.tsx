@@ -16,8 +16,9 @@ const Dashboard = () => {
     <div className="p-10">
       <Table
         title="Players"
-        columns={["Username", "Race", "Class", "Level"]}
+        columns={["Username", "Race", "Class", "Level", "Action"]}
         data={players}
+        onRowClick={() => {}}
       />
     </div>
   );
