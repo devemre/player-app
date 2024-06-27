@@ -45,7 +45,7 @@ const Table = (props: TableProps) => {
               </td>
               <td className="border-gray-300 p-1">{element.level}</td>
               <td className="border-gray-300 p-1">
-                <button onClick={props.onRowClick} />
+                <button onClick={props.onRowClick}>edit</button>
               </td>
             </tr>
           ))}
