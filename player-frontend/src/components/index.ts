@@ -1,4 +1,5 @@
-import Table from "./Table";
+import Input from "./Input";
 import Navbar from "./Navbar";
+import Table from "./Table";
 
-export { Table, Navbar };
+export { Input, Navbar, Table };

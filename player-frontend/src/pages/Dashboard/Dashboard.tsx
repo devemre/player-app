@@ -17,7 +17,7 @@ const Dashboard = () => {
       <Table
         title="Players"
         columns={["Username", "Race", "Class", "Level", "Action"]}
-        data={players}
+        data={[]}
       />
     </div>
   );
