@@ -4,7 +4,7 @@ type TableProps = {
   title?: string;
   columns: Array<string>;
   data: Array<Player>;
-  onRowClick: () => {};
+  onRowClick: () => void;
 };
 
 const Table = (props: TableProps) => {
