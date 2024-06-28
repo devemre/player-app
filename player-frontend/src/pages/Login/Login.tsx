@@ -6,7 +6,7 @@ const Login = () => {
   const [password, setPassword] = useState<string>("");
 
   return (
-    <div className="flex justify-center items-center h-svh">
+    <div className="flex justify-center items-center h-screen">
       <div className="bg-slate-100 border border-slate-700 rounded-md p-6 h-fit flex flex-col gap-2">
         <Input
           type="email"
