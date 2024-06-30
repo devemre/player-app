@@ -1,12 +1,12 @@
-package com.devemre.backend.controller;
+package com.devemre.backend.dto;
 
 import com.devemre.backend.character.CharacterClass;
 import com.devemre.backend.character.CharacterRace;
 
-
-public record PlayerRequest(
+public record PlayerResponse(
         String username,
         CharacterRace characterRace,
-        CharacterClass characterClass
+        CharacterClass characterClass,
+        Integer level
 ) {
 }

@@ -1,6 +1,7 @@
 package com.devemre.backend.service;
 
-import com.devemre.backend.controller.PlayerRequest;
+import com.devemre.backend.dto.PlayerRequest;
+import com.devemre.backend.dto.PlayerResponse;
 import com.devemre.backend.entity.Player;
 import com.devemre.backend.exception.PlayerNotFoundException;
 import com.devemre.backend.exception.UsernameAlreadyExistsException;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,12 +19,17 @@ public class PlayerService {
     private final PlayerRepository repository;
     private final PlayerMapper mapper;
 
-    public List<Player> findAll() {
-        return repository.findAll();
+    public List<PlayerResponse> findAll() {
+        return repository
+                .findAll()
+                .stream()
+                .map(mapper::toPlayerResponse)
+                .collect(Collectors.toList());
     }
 
-    public Player findPlayerByUsername(String username) {
+    public PlayerResponse findPlayerByUsername(String username) {
         return repository.findPlayerByUsername(username)
+                .map(mapper::toPlayerResponse)
                 .orElseThrow(() -> new PlayerNotFoundException("Player: " + username + " not found!"));
     }
 

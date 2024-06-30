@@ -1,5 +1,7 @@
 package com.devemre.backend.controller;
 
+import com.devemre.backend.dto.PlayerRequest;
+import com.devemre.backend.dto.PlayerResponse;
 import com.devemre.backend.entity.Player;
 import com.devemre.backend.service.PlayerService;
 import lombok.RequiredArgsConstructor;
@@ -16,17 +18,17 @@ public class PlayerController {
     private final PlayerService service;
 
     @GetMapping
-    public ResponseEntity<List<Player>> findAll() {
-        List<Player> players = service.findAll();
+    public ResponseEntity<List<PlayerResponse>> findAll() {
+        List<PlayerResponse> players = service.findAll();
 
         return ResponseEntity.ok(players);
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<Player> findByUsername(
+    public ResponseEntity<PlayerResponse> findByUsername(
             @PathVariable("username") String username
     ) {
-        Player player = service.findPlayerByUsername(username);
+        PlayerResponse player = service.findPlayerByUsername(username);
 
         return ResponseEntity.ok(player);
     }
